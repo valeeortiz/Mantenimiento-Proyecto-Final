@@ -1,7 +1,9 @@
+package com.example;
+
 import java.io.File;
 
 public class FileTreePreorder {
-    public static void listFilesPreorder(File dir, int level) {
+    public void listFilesPreorder(File dir, int level) {
         if (!dir.exists()) return;
 
         // Imprime el nombre del directorio o archivo
@@ -16,10 +18,5 @@ public class FileTreePreorder {
                 }
             }
         }
-    }
-
-    public static void main(String[] args) {
-        File root = new File("./new"); // Ruta del directorio
-        listFilesPreorder(root, 0);
     }
 }

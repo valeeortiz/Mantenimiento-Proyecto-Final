@@ -1,12 +1,12 @@
+package new3.new4;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class Test2 {
+public class Test7 {
 
     public static void main(String[] args) {
         
@@ -15,6 +15,10 @@ public class Test2 {
         String result="";
         int totalLinesProject=0;
 
+        // This is a comment
+        // This is a comment
+        // This is a comment
+        // This is a comment
         // This is a comment
         
         for(File file:files){
@@ -46,7 +50,7 @@ public class Test2 {
                     result+="\nFile: "+file.getName()+"\nTotal lines= "+totalLines+" | enter= "+enter+" | comments="+comment+" | }= "+close+" | LOC= "+loc;
 
                 } catch (FileNotFoundException ex) {
-                    Logger.getLogger(LOC.class.getName()).log(Level.SEVERE, null, ex);
+                    
                 }
             
         }
@@ -58,7 +62,7 @@ public class Test2 {
             fw.close();
             
         } catch (IOException ex) {
-            Logger.getLogger(LOC.class.getName()).log(Level.SEVERE, null, ex);
+            
         }       
         
         

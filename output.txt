@@ -1,8 +1,0 @@
-
-File: Test2.java
-Total lines= 86 | enter= 14 | comments=1 | }= 11 | LOC= 60
-File: Test3.java
-Total lines= 87 | enter= 14 | comments=2 | }= 11 | LOC= 60
-File: Test4.java
-Total lines= 94 | enter= 15 | comments=5 | }= 12 | LOC= 62
-sum LOC= 182
