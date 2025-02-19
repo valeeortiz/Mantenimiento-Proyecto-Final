@@ -1,8 +1,24 @@
 
-File: Test4.txt
-Total lines= 90 | enter= 15 | comments=5 | }= 12 | LOC= 58
-File: Test3.txt
-Total lines= 87 | enter= 14 | comments=2 | }= 11 | LOC= 60
-File: Test2.txt
-Total lines= 83 | enter= 15 | comments=1 | }= 11 | LOC= 56
-sum LOC= 174
+File: array_queue.py
+Total lines= 78 | enter= 16 | comments=0 | }= 0 | LOC= 62
+File: circular_deque.py
+Total lines= 112 | enter= 13 | comments=0 | }= 0 | LOC= 99
+File: empty.py
+Total lines= 5 | enter= 0 | comments=0 | }= 0 | LOC= 5
+File: __init__.py
+Total lines= 2 | enter= 0 | comments=0 | }= 0 | LOC= 2
+File: empty.cpython-310.pyc
+Total lines= 11 | enter= 1 | comments=0 | }= 0 | LOC= 10
+File: Empty.cpython-311.pyc
+Total lines= 10 | enter= 3 | comments=0 | }= 0 | LOC= 7
+File: __init__.cpython-310.pyc
+Total lines= 0 | enter= 0 | comments=0 | }= 0 | LOC= 0
+File: __init__.cpython-311.pyc
+Total lines= 0 | enter= 0 | comments=0 | }= 0 | LOC= 0
+File: Test.py
+Total lines= 28 | enter= 3 | comments=0 | }= 0 | LOC= 25
+File: array_queue.cpython-311.pyc
+Total lines= 0 | enter= 0 | comments=0 | }= 0 | LOC= 0
+File: circular_deque.cpython-311.pyc
+Total lines= 0 | enter= 0 | comments=0 | }= 0 | LOC= 0
+Total LOC in project= 210

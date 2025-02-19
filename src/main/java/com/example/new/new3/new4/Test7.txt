@@ -85,6 +85,4 @@ public class Test7 {
         System.out.println("loc "+line);
         return "loc";
     }
-       
-    
 }
