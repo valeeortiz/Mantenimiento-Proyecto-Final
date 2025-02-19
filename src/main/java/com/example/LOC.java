@@ -26,8 +26,10 @@ public class LOC {
                 }
             }
         } else {
-            // Si es un archivo, contar sus líneas de código
-            countLinesOfCode(directory);
+            // Si es un archivo .java, contar sus líneas de código
+            if (directory.getName().endsWith(".java")) {
+                countLinesOfCode(directory);
+            }
         }
     }
 

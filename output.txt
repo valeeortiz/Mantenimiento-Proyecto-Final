@@ -1,24 +1,42 @@
 
-File: array_queue.py
-Total lines= 78 | enter= 16 | comments=0 | }= 0 | LOC= 62
-File: circular_deque.py
-Total lines= 112 | enter= 13 | comments=0 | }= 0 | LOC= 99
-File: empty.py
-Total lines= 5 | enter= 0 | comments=0 | }= 0 | LOC= 5
-File: __init__.py
-Total lines= 2 | enter= 0 | comments=0 | }= 0 | LOC= 2
-File: empty.cpython-310.pyc
-Total lines= 11 | enter= 1 | comments=0 | }= 0 | LOC= 10
-File: Empty.cpython-311.pyc
-Total lines= 10 | enter= 3 | comments=0 | }= 0 | LOC= 7
-File: __init__.cpython-310.pyc
-Total lines= 0 | enter= 0 | comments=0 | }= 0 | LOC= 0
-File: __init__.cpython-311.pyc
-Total lines= 0 | enter= 0 | comments=0 | }= 0 | LOC= 0
-File: Test.py
-Total lines= 28 | enter= 3 | comments=0 | }= 0 | LOC= 25
-File: array_queue.cpython-311.pyc
-Total lines= 0 | enter= 0 | comments=0 | }= 0 | LOC= 0
-File: circular_deque.cpython-311.pyc
-Total lines= 0 | enter= 0 | comments=0 | }= 0 | LOC= 0
-Total LOC in project= 210
+File: AuthenticationService.java
+Total lines= 20 | enter= 4 | comments=0 | }= 2 | LOC= 14
+File: UserService.java
+Total lines= 72 | enter= 20 | comments=0 | }= 6 | LOC= 46
+File: TokenService.java
+Total lines= 73 | enter= 15 | comments=0 | }= 8 | LOC= 50
+File: RabbitReceiverService.java
+Total lines= 23 | enter= 6 | comments=0 | }= 2 | LOC= 15
+File: RabbitSenderService.java
+Total lines= 27 | enter= 9 | comments=0 | }= 2 | LOC= 16
+File: AuthController.java
+Total lines= 93 | enter= 15 | comments=19 | }= 6 | LOC= 53
+File: SecurityFilter.java
+Total lines= 53 | enter= 7 | comments=0 | }= 6 | LOC= 40
+File: SecurityConfigurations.java
+Total lines= 48 | enter= 8 | comments=0 | }= 4 | LOC= 36
+File: RabbitMQConfigurations.java
+Total lines= 62 | enter= 12 | comments=0 | }= 7 | LOC= 43
+File: BlacklistedTokenRepository.java
+Total lines= 15 | enter= 6 | comments=0 | }= 1 | LOC= 8
+File: UserRepository.java
+Total lines= 15 | enter= 4 | comments=0 | }= 1 | LOC= 10
+File: User.java
+Total lines= 78 | enter= 15 | comments=0 | }= 9 | LOC= 54
+File: UserRole.java
+Total lines= 16 | enter= 4 | comments=0 | }= 3 | LOC= 9
+File: RegisterDTO.java
+Total lines= 24 | enter= 7 | comments=0 | }= 1 | LOC= 16
+File: RabbitRegisterDTO.java
+Total lines= 6 | enter= 1 | comments=0 | }= 1 | LOC= 4
+File: LoginResponseDTO.java
+Total lines= 4 | enter= 1 | comments=0 | }= 1 | LOC= 2
+File: AuthenticationDTO.java
+Total lines= 4 | enter= 1 | comments=0 | }= 1 | LOC= 2
+File: BlacklistedToken.java
+Total lines= 26 | enter= 5 | comments=0 | }= 2 | LOC= 19
+File: AuthServiceApplication.java
+Total lines= 14 | enter= 4 | comments=0 | }= 2 | LOC= 8
+File: AuthServiceApplicationTests.java
+Total lines= 13 | enter= 4 | comments=0 | }= 2 | LOC= 7
+Total LOC in project= 452
