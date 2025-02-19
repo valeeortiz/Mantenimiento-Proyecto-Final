@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        LOC loc= new LOC();
+        LOC loc = new LOC();
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Ingrese la ruta del directorio: ");

@@ -10,13 +10,15 @@ import java.util.logging.Logger;
 public class LOC {
 
     private static int totalLinesProject = 0;
-    private static String result="";
+    private static String result = "";
 
     public void listFilesPreorder(File directory, int level) {
-        if (!directory.exists()) return;
+        if (!directory.exists()){
+            return;
+        }
 
         // Imprime el nombre del directorio o archivo
-        //System.out.println("  ".repeat(level) + "- " + directory.getName());
+        // System.out.println("  ".repeat(level) + "- " + directory.getName());
 
         if (directory.isDirectory()) {
             File[] files = directory.listFiles();
@@ -91,7 +93,7 @@ public class LOC {
         }
     }
 
-     /* 
+    /* 
     public static void main(String[] args) {
         Prueba prueba= new Prueba();
         Scanner scanner = new Scanner(System.in);
@@ -110,6 +112,7 @@ public class LOC {
 
         prueba.listFilesPreorder(root, 0);
         prueba.saveResults();
-    } */
+    } 
+    */
     
 }
