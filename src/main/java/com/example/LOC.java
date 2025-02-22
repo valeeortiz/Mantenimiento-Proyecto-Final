@@ -10,28 +10,9 @@ import java.util.logging.Logger;
 public class LOC {
 
     private static int totalLinesProject = 0;
-    private static String result="";
+    private static String result = "";
 
-    public void listFilesPreorder(File directory, int level) {
-        if (!directory.exists()) return;
-
-        // Imprime el nombre del directorio o archivo
-        //System.out.println("  ".repeat(level) + "- " + directory.getName());
-
-        if (directory.isDirectory()) {
-            File[] files = directory.listFiles();
-            if (files != null) {
-                for (File file : files) {
-                    listFilesPreorder(file, level + 1);
-                }
-            }
-        } else {
-            // Si es un archivo, contar sus líneas de código
-            countLinesOfCode(directory);
-        }
-    }
-
-    private void countLinesOfCode(File file) {
+    void countLinesOfCode(File file) {
         try {
             int totalLines = 0; 
             int enter = 0;
@@ -53,11 +34,11 @@ public class LOC {
 
             totalLinesProject += loc;
             result += "\nFile: " + file.getName() +
-            "\nTotal lines= " + totalLines +
-            " | enter= " + enter +
-            " | comments=" + comment +
-            " | }= " + close +
-            " | LOC= " + loc;
+            "\nTotal lines = " + totalLines +
+            " | enter = " + enter +
+            " | comments =" + comment +
+            " | } = " + close +
+            " | LOC = " + loc;
 
         } catch (IOException ex) {
             Logger.getLogger(LOC.class.getName()).log(Level.SEVERE, null, ex);
@@ -88,26 +69,4 @@ public class LOC {
             Logger.getLogger(LOC.class.getName()).log(Level.SEVERE, null, exception);
         }
     }
-
-     /* 
-    public static void main(String[] args) {
-        Prueba prueba= new Prueba();
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Ingrese la ruta del directorio: ");
-        String inputPath = scanner.nextLine().trim();
-        scanner.close();
-
-        File root = new File(inputPath);
-        System.out.println("Ruta ingresada: " + root.getAbsolutePath());
-
-        if (!root.exists()) {
-            System.out.println("La ruta especificada no es un directorio válido.");
-            return;
-        }
-
-        prueba.listFilesPreorder(root, 0);
-        prueba.saveResults();
-    } */
-    
 }
