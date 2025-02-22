@@ -6,9 +6,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         
-        FilePreorder filePreorder = new FilePreorder();
         LOC loc = new LOC();
-
+        FilePreorder filePreorder = new FilePreorder();
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Ingrese la ruta del directorio: ");
