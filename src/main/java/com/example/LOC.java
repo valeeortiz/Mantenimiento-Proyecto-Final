@@ -11,6 +11,7 @@ public class LOC {
 
     private static int totalLinesProject = 0;
     private static String result = "";
+    private boolean insideBlockComment = false;
 
     void countLinesOfCode(File file) {
         try {
@@ -19,15 +20,47 @@ public class LOC {
             int comment = 0;
             int close = 0;
             int loc = 0;
+            String logicalLine = "";
             Scanner scanner = new Scanner(file);
 
             while (scanner.hasNext()) {
                 totalLines++;
-                switch (checkLine(scanner.nextLine())) {
-                    case "n": enter++; break;
-                    case "comment": comment++; break;
-                    case "": close++; break;
-                    case "loc": loc++; break;
+                String currentLine = scanner.nextLine().trim();
+
+                if (insideBlockComment) {
+                    comment++;
+                    if (currentLine.contains("*/")) {
+                        insideBlockComment = false; 
+                    }
+                    continue; 
+                }
+
+                if (currentLine.contains("/*")) {
+                    insideBlockComment = true;
+                    continue; 
+                }
+
+                switch (checkLine(currentLine)) {
+                    case "n": 
+                    enter++; 
+                    break;
+                    case "comment": 
+                    comment++; 
+                    break;
+                    case "": 
+                    close++; 
+                    break;
+                    case "loc": 
+                    logicalLine += currentLine + " "; 
+                    if (!currentLine.endsWith(";") && 
+                            !currentLine.endsWith("{") && 
+                            !currentLine.endsWith("}") &&
+                            !currentLine.endsWith("*/")) {
+                            continue; 
+                        }
+                    loc++; 
+                    logicalLine = "";
+                    break;
                 }
             }
             scanner.close();
@@ -36,7 +69,7 @@ public class LOC {
             result += "\nFile: " + file.getName() +
             "\nTotal lines = " + totalLines +
             " | enter = " + enter +
-            " | comments =" + comment +
+            " | comments = " + comment +
             " | } = " + close +
             " | LOC = " + loc;
 

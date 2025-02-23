@@ -1,0 +1,15 @@
+totalLinesProject += loc;
+            result += "\nFile: " + file.getName() +
+            "\nTotal lines = " + totalLines +
+            " | enter = " + enter +
+            " | comments =" + comment +
+            " | } = " + close +
+            " | LOC = " + loc;
+
+/*
+the systems engineering process and is not changeable by the enterprise (ISO/IEC/IEEE 24765:2010 
+[B42]). A design constraint is an explicit and direct restriction regarding the choice of design ideas. It either 
+declares a design idea to be compulsory or to be excluded. 
+*/
+
+// Comentario 
