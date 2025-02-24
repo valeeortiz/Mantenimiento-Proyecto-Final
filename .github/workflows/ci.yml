@@ -4,6 +4,9 @@ on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: write
+
 jobs:
 
   formatting:
@@ -15,8 +18,8 @@ jobs:
           args: "--skip-sorting-imports --replace"
       - name: Commit and Push if Changes
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           git diff --quiet && git diff --staged --quiet || git commit -m "Apply Java formatting"
-          git push https://valeeortiz:${{ secrets.SECRET_TOKEN }}@github.com/valeeortiz/Mantenimiento-Proyecto-Final.git
+          git push
