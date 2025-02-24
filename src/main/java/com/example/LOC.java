@@ -9,97 +9,104 @@ import java.util.logging.Logger;
 
 public class LOC {
 
-    private static int totalLinesProject = 0;
-    private static String result = "";
-    private boolean insideBlockComment = false;
+  private static int totalLinesProject = 0;
+  private static String result = "";
+  private boolean insideBlockComment = false;
 
-    void countLinesOfCode(File file) {
-        try {
-            int totalLines = 0; 
-            int enter = 0;
-            int comment = 0;
-            int close = 0;
-            int loc = 0;
-            String logicalLine = "";
-            Scanner scanner = new Scanner(file);
+  void countLinesOfCode(File file) {
+    try {
+      int totalLines = 0;
+      int enter = 0;
+      int comment = 0;
+      int close = 0;
+      int loc = 0;
+      String logicalLine = "";
+      Scanner scanner = new Scanner(file);
 
-            while (scanner.hasNext()) {
-                totalLines++;
-                String currentLine = scanner.nextLine().trim();
+      while (scanner.hasNext()) {
+        totalLines++;
+        String currentLine = scanner.nextLine().trim();
 
-                if (insideBlockComment) {
-                    comment++;
-                    if (currentLine.contains("*/")) {
-                        insideBlockComment = false; 
-                    }
-                    continue; 
-                }
+        if (insideBlockComment) {
+          comment++;
+          if (currentLine.contains("*/")) {
+            insideBlockComment = false;
+          }
+          continue;
+        }
 
-                if (currentLine.contains("/*")) {
-                    insideBlockComment = true;
-                    continue; 
-                }
+        if (currentLine.contains("/*")) {
+          insideBlockComment = true;
+          continue;
+        }
 
-                switch (checkLine(currentLine)) {
-                    case "n": 
-                    enter++; 
-                    break;
-                    case "comment": 
-                    comment++; 
-                    break;
-                    case "": 
-                    close++; 
-                    break;
-                    case "loc": 
-                    logicalLine += currentLine + " "; 
-                    if (!currentLine.endsWith(";") && 
-                            !currentLine.endsWith("{") && 
-                            !currentLine.endsWith("}") &&
-                            !currentLine.endsWith("*/")) {
-                            continue; 
-                        }
-                    loc++; 
-                    logicalLine = "";
-                    break;
-                }
+        switch (checkLine(currentLine)) {
+          case "n":
+            enter++;
+            break;
+          case "comment":
+            comment++;
+            break;
+          case "":
+            close++;
+            break;
+          case "loc":
+            logicalLine += currentLine + " ";
+            if (!currentLine.endsWith(";")
+                && !currentLine.endsWith("{")
+                && !currentLine.endsWith("}")
+                && !currentLine.endsWith("*/")) {
+              continue;
             }
-            scanner.close();
-
-            totalLinesProject += loc;
-            result += "\nFile: " + file.getName() +
-            "\nTotal lines = " + totalLines +
-            " | enter = " + enter +
-            " | comments = " + comment +
-            " | } = " + close +
-            " | LOC = " + loc;
-
-        } catch (IOException ex) {
-            Logger.getLogger(LOC.class.getName()).log(Level.SEVERE, null, ex);
+            loc++;
+            logicalLine = "";
+            break;
         }
-    }
+      }
+      scanner.close();
 
-    private String checkLine(String line) {
-        if (line.matches("^[\\s/\\t]*}[^a-z]*$")){
-            return "";
-        } 
-        if (line.matches("^[\\s]*[//*].*$")){
-            return "comment";
-        }
-        if (!line.matches("^.*[a-z]+.*$")){
-            return "n";
-        } 
-        return "loc";
-    }
+      totalLinesProject += loc;
+      result +=
+          "\nFile: "
+              + file.getName()
+              + "\nTotal lines = "
+              + totalLines
+              + " | enter = "
+              + enter
+              + " | comments = "
+              + comment
+              + " | } = "
+              + close
+              + " | LOC = "
+              + loc;
 
-    public void saveResults() {
-        File output = new File("output.txt");
-        try {
-            output.createNewFile();
-            FileWriter filewriter = new FileWriter(output);
-            filewriter.write(result + "\nTotal LOC in project= " + totalLinesProject);
-            filewriter.close();
-        } catch (IOException exception) {
-            Logger.getLogger(LOC.class.getName()).log(Level.SEVERE, null, exception);
-        }
+    } catch (IOException ex) {
+      Logger.getLogger(LOC.class.getName()).log(Level.SEVERE, null, ex);
     }
+  }
+
+  private String checkLine(String line) {
+    if (line.matches("^[\\s/\\t]*}[^a-z]*$")) {
+      return "";
+    }
+    if (line.matches("^[\\s]*[//*].*$")) {
+      return "comment";
+    }
+    if (!line.matches("^.*[a-z]+.*$")) {
+      return "n";
+    }
+    return "loc";
+  }
+
+  public void saveResults() {
+    File output = new File("output.txt");
+    try {
+      output.createNewFile();
+      FileWriter filewriter = new FileWriter(output);
+      filewriter.write(result + "\nTotal LOC in project= " + totalLinesProject);
+      filewriter.close();
+    } catch (IOException exception) {
+      Logger.getLogger(LOC.class.getName()).log(Level.SEVERE, null, exception);
+    }
+  }
 }

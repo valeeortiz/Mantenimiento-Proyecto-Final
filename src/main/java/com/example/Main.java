@@ -4,26 +4,25 @@ import java.io.File;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        
-        LOC loc = new LOC();
-        FilePreorder filePreorder = new FilePreorder();
-        Scanner scanner = new Scanner(System.in);
+  public static void main(String[] args) {
 
-        System.out.print("Ingrese la ruta del directorio: ");
-        String inputPath = scanner.nextLine().trim();
-        scanner.close();
+    LOC loc = new LOC();
+    FilePreorder filePreorder = new FilePreorder();
+    Scanner scanner = new Scanner(System.in);
 
-        File root = new File(inputPath);
-        System.out.println("Ruta ingresada: " + root.getAbsolutePath());
+    System.out.print("Ingrese la ruta del directorio: ");
+    String inputPath = scanner.nextLine().trim();
+    scanner.close();
 
-        if (!root.exists()) {
-            System.out.println("La ruta especificada no es un directorio válido.");
-            return;
-        }
+    File root = new File(inputPath);
+    System.out.println("Ruta ingresada: " + root.getAbsolutePath());
 
-        filePreorder.listFilesPreorder(root, 0);
-        loc.saveResults();
-    
+    if (!root.exists()) {
+      System.out.println("La ruta especificada no es un directorio válido.");
+      return;
     }
+
+    filePreorder.listFilesPreorder(root, 0);
+    loc.saveResults();
+  }
 }
