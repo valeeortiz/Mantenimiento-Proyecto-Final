@@ -1,16 +1,30 @@
 
-File: Test5.txt
-Total lines = 90 | enter = 14 | comments = 19 | } = 7 | LOC = 45
-File: Test8.txt
-Total lines = 15 | enter = 2 | comments = 5 | } = 0 | LOC = 2
-File: Test7.txt
-Total lines = 88 | enter = 14 | comments = 17 | } = 7 | LOC = 45
-File: Test6.txt
-Total lines = 90 | enter = 14 | comments = 19 | } = 7 | LOC = 45
-File: Test2.txt
-Total lines = 83 | enter = 12 | comments = 15 | } = 7 | LOC = 44
-File: Test3.txt
-Total lines = 87 | enter = 11 | comments = 16 | } = 7 | LOC = 48
-File: Test4.txt
-Total lines = 90 | enter = 11 | comments = 23 | } = 7 | LOC = 44
-Total LOC in project= 273
+File: PostService.java
+Total lines = 143 | enter = 30 | comments = 0 | } = 19 | LOC = 87
+File: TokenService.java
+Total lines = 61 | enter = 14 | comments = 0 | } = 8 | LOC = 32
+File: RabbitReceiverService.java
+Total lines = 23 | enter = 6 | comments = 0 | } = 2 | LOC = 11
+File: PostsServiceApplication.java
+Total lines = 14 | enter = 4 | comments = 0 | } = 2 | LOC = 7
+File: PostsController.java
+Total lines = 141 | enter = 28 | comments = 44 | } = 8 | LOC = 38
+File: SecurityFilter.java
+Total lines = 56 | enter = 10 | comments = 0 | } = 6 | LOC = 37
+File: SecurityConfigurations.java
+Total lines = 49 | enter = 8 | comments = 0 | } = 4 | LOC = 22
+File: RabbitMQConfigurations.java
+Total lines = 40 | enter = 9 | comments = 0 | } = 4 | LOC = 19
+File: PostRepository.java
+Total lines = 15 | enter = 4 | comments = 0 | } = 1 | LOC = 9
+File: BlacklistedTokenRepository.java
+Total lines = 15 | enter = 6 | comments = 0 | } = 1 | LOC = 7
+File: Post.java
+Total lines = 41 | enter = 9 | comments = 0 | } = 4 | LOC = 22
+File: AddPostDTO.java
+Total lines = 20 | enter = 6 | comments = 0 | } = 1 | LOC = 3
+File: BlacklistedToken.java
+Total lines = 18 | enter = 4 | comments = 0 | } = 1 | LOC = 8
+File: PostsServiceApplicationTests.java
+Total lines = 13 | enter = 4 | comments = 0 | } = 2 | LOC = 5
+Total LOC in project= 307

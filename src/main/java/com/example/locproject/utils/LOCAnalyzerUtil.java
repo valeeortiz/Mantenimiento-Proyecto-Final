@@ -1,4 +1,4 @@
-package com.example;
+package com.example.locproject.utils;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -7,20 +7,19 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class LOC {
+public class LOCAnalyzerUtil {
 
   private static int totalLinesProject = 0;
   private static String result = "";
   private boolean insideBlockComment = false;
 
-  void countLinesOfCode(File file) {
+  public void countLinesOfCode(File file) {
     try {
       int totalLines = 0;
       int enter = 0;
       int comment = 0;
       int close = 0;
       int loc = 0;
-      String logicalLine = "";
       Scanner scanner = new Scanner(file);
 
       while (scanner.hasNext()) {
@@ -51,7 +50,6 @@ public class LOC {
             close++;
             break;
           case "loc":
-            logicalLine += currentLine + " ";
             if (!currentLine.endsWith(";")
                 && !currentLine.endsWith("{")
                 && !currentLine.endsWith("}")
@@ -59,7 +57,6 @@ public class LOC {
               continue;
             }
             loc++;
-            logicalLine = "";
             break;
         }
       }
@@ -81,7 +78,7 @@ public class LOC {
               + loc;
 
     } catch (IOException ex) {
-      Logger.getLogger(LOC.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(LOCAnalyzerUtil.class.getName()).log(Level.SEVERE, null, ex);
     }
   }
 
@@ -106,7 +103,8 @@ public class LOC {
       filewriter.write(result + "\nTotal LOC in project= " + totalLinesProject);
       filewriter.close();
     } catch (IOException exception) {
-      Logger.getLogger(LOC.class.getName()).log(Level.SEVERE, null, exception);
+      Logger.getLogger(LOCAnalyzerUtil.class.getName()).log(Level.SEVERE, null, exception);
     }
   }
 }
+
