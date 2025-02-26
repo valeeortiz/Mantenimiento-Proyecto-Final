@@ -17,7 +17,6 @@ public class LOCAnalyzerUtil {
       int totalLines = 0;
       int enter = 0;
       int comment = 0;
-      int closeKey = 0;
       int logicalLine = 0;
       int physicalLine = 0;
       Scanner scanner = new Scanner(file);
@@ -32,9 +31,6 @@ public class LOCAnalyzerUtil {
             break;
           case "comment":
             comment++;
-            break;
-          case "":
-            closeKey++;
             break;
           case "logical line":
             logicalLine++;
