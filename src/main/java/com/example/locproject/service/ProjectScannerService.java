@@ -4,9 +4,12 @@ import java.io.File;
 
 import com.example.locproject.utils.LOCAnalyzerUtil;
 
+import com.example.locproject.utils.GoogleJavaFormatUtil;
+
 public class ProjectScannerService {
 
   private LOCAnalyzerUtil analyzer = new LOCAnalyzerUtil();
+  private GoogleJavaFormatUtil formatter = new GoogleJavaFormatUtil();
 
   public void scanDirectory(File directory) {
 
@@ -18,7 +21,7 @@ public class ProjectScannerService {
         }
       }
     } else {
-      if (directory.getName().endsWith(".java")) {
+      if (directory.getName().endsWith(".java") && formatter.isFormatValid(directory)) {
         this.analyzer.countLinesOfCode(directory);
       }
     }

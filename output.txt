@@ -1,8 +1,20 @@
 
-Program: ProjectScannerService.java
-Logical Lines = 8 | Physical Lines = 20 | Total Lines = 30
+Program: PostRepository.java
+Logical Lines = 2 | Physical Lines = 11 | Total Lines = 15
 ----------------------------------------------------------
-Program: Main.java
-Logical Lines = 11 | Physical Lines = 18 | Total Lines = 31
+Program: BlacklistedTokenRepository.java
+Logical Lines = 1 | Physical Lines = 9 | Total Lines = 15
 ----------------------------------------------------------
-Total LOC in project= 61
+Program: Post.java
+Logical Lines = 12 | Physical Lines = 32 | Total Lines = 41
+----------------------------------------------------------
+Program: AddPostDTO.java
+Logical Lines = 3 | Physical Lines = 14 | Total Lines = 20
+----------------------------------------------------------
+Program: BlacklistedToken.java
+Logical Lines = 2 | Physical Lines = 14 | Total Lines = 18
+----------------------------------------------------------
+Program: PostsServiceApplicationTests.java
+Logical Lines = 0 | Physical Lines = 9 | Total Lines = 13
+----------------------------------------------------------
+Total LOC in project= 122
