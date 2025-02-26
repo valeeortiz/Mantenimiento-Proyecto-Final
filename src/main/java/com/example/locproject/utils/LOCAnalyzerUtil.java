@@ -11,71 +11,50 @@ public class LOCAnalyzerUtil {
 
   private static int totalLinesProject = 0;
   private static String result = "";
-  private boolean insideBlockComment = false;
 
   public void countLinesOfCode(File file) {
     try {
       int totalLines = 0;
       int enter = 0;
       int comment = 0;
-      int close = 0;
-      int loc = 0;
+      int closeKey = 0;
+      int logicalLine = 0;
+      int physicalLine = 0;
       Scanner scanner = new Scanner(file);
 
       while (scanner.hasNext()) {
         totalLines++;
         String currentLine = scanner.nextLine().trim();
 
-        if (insideBlockComment) {
-          comment++;
-          if (currentLine.contains("*/")) {
-            insideBlockComment = false;
-          }
-          continue;
-        }
-
-        if (currentLine.contains("/*")) {
-          insideBlockComment = true;
-          continue;
-        }
-
         switch (checkLine(currentLine)) {
-          case "n":
+          case "enter":
             enter++;
             break;
           case "comment":
             comment++;
             break;
           case "":
-            close++;
+            closeKey++;
             break;
-          case "loc":
-            if (!currentLine.endsWith(";")
-                && !currentLine.endsWith("{")
-                && !currentLine.endsWith("}")
-                && !currentLine.endsWith("*/")) {
-              continue;
-            }
-            loc++;
+          case "logical line":
+            logicalLine++;
             break;
         }
       }
       scanner.close();
 
-      totalLinesProject += loc;
+      totalLinesProject += totalLines;
+      physicalLine = totalLines - (enter + comment);
       result +=
-          "\nFile: "
+          "\nProgram: "
               + file.getName()
-              + "\nTotal lines = "
+              + "\nLogical Lines = "
+              + logicalLine
+              + " | Physical Lines = "
+              + physicalLine
+              + " | Total Lines = "
               + totalLines
-              + " | enter = "
-              + enter
-              + " | comments = "
-              + comment
-              + " | } = "
-              + close
-              + " | LOC = "
-              + loc;
+              + "\n----------------------------------------------------------";
 
     } catch (IOException ex) {
       Logger.getLogger(LOCAnalyzerUtil.class.getName()).log(Level.SEVERE, null, ex);
@@ -86,13 +65,20 @@ public class LOCAnalyzerUtil {
     if (line.matches("^[\\s/\\t]*}[^a-z]*$")) {
       return "";
     }
-    if (line.matches("^[\\s]*[//*].*$")) {
+    if (line.matches("^[\\s]*[//*].*$") || line.matches("^\\\\s*/\\\\*.*\\\\*/\\\\s*$")) {
       return "comment";
     }
     if (!line.matches("^.*[a-z]+.*$")) {
-      return "n";
+      return "enter";
     }
-    return "loc";
+    if ((line.endsWith(";") || line.matches(".*\\).*")) &&
+        !line.startsWith("package") &&
+        !line.startsWith("import") &&
+        !line.matches("^\\s*(public|private|protected)?\\s*(class|interface|enum)\\s+\\w+") && 
+        !line.matches(".*\\s+\\w+\\s*\\(.*\\)\\s*\\{")) {
+        return "logical line";
+    }
+        return "No match";
   }
 
   public void saveResults() {
