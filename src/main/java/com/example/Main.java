@@ -23,6 +23,5 @@ public class Main {
     }
 
     projectScanner.scanDirectory(root);
-    
   }
 }
