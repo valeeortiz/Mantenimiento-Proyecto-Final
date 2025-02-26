@@ -67,11 +67,13 @@ public class LOCAnalyzerUtil {
     if (!line.matches("^.*[a-z]+.*$")) {
       return "enter";
     }
-    if ((line.endsWith(";") || line.matches(".*\\).*"))
-        && !line.startsWith("package")
-        && !line.startsWith("import")
-        && !line.matches("^\\s*(public|private|protected)?\\s*(class|interface|enum)\\s+\\w+")
-        && !line.matches(".*\\s+\\w+\\s*\\(.*\\)\\s*\\{")) {
+    String cleanedLine = line.replaceAll("//.*", "").trim();
+    if ((cleanedLine.endsWith(";") || line.matches(".*\\).*"))
+        && !cleanedLine.startsWith("package")
+        && !cleanedLine.startsWith("import")
+        && !cleanedLine.matches(
+            "^\\s*(public|private|protected)?\\s*(class|interface|enum)\\s+\\w+")
+        && !cleanedLine.matches(".*\\s+\\w+\\s*\\(.*\\)\\s*\\{")) {
       return "logical line";
     }
     return "No match";

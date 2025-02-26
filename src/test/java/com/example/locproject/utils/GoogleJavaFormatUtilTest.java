@@ -40,9 +40,9 @@ class GoogleJavaFormatUtilTest {
 
         String invalidContent = 
             "public class InvalidClass {\n" +
-            "   public void invalidMethod() \n" +
+            "   public int invalidMethod(){ return 5+5 } \n" +
             "       // Invalid code\n" +
-            "   }\n" +
+            "   \n" +
             "}\n";
         Files.write(invalidFile.toPath(), invalidContent.getBytes());
 
