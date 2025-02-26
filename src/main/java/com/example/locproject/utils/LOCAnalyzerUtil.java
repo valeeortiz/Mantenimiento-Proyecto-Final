@@ -71,14 +71,14 @@ public class LOCAnalyzerUtil {
     if (!line.matches("^.*[a-z]+.*$")) {
       return "enter";
     }
-    if ((line.endsWith(";") || line.matches(".*\\).*")) &&
-        !line.startsWith("package") &&
-        !line.startsWith("import") &&
-        !line.matches("^\\s*(public|private|protected)?\\s*(class|interface|enum)\\s+\\w+") && 
-        !line.matches(".*\\s+\\w+\\s*\\(.*\\)\\s*\\{")) {
-        return "logical line";
+    if ((line.endsWith(";") || line.matches(".*\\).*"))
+        && !line.startsWith("package")
+        && !line.startsWith("import")
+        && !line.matches("^\\s*(public|private|protected)?\\s*(class|interface|enum)\\s+\\w+")
+        && !line.matches(".*\\s+\\w+\\s*\\(.*\\)\\s*\\{")) {
+      return "logical line";
     }
-        return "No match";
+    return "No match";
   }
 
   public void saveResults() {
