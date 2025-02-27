@@ -28,10 +28,11 @@ jobs:
       - uses: actions/checkout@v4
       - name: Set up JDK 17
         uses: actions/setup-java@v4
-        run: git clone https://github.com/MiguelCastilloSanchez/spring-boot-posts-service.git
         with:
           java-version: '17'
           distribution: 'temurin'
+      - name: Clone repository
+        run: git clone https://github.com/MiguelCastilloSanchez/spring-boot-posts-service.git
       - name: Build and Run Tests with Maven
         run: mvn clean test -Dtest=ProjectScannerServiceTest
 
