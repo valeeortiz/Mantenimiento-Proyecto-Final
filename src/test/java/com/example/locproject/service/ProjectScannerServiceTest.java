@@ -33,11 +33,11 @@ class ProjectScannerServiceTest {
         String actualOutput = String.join("\n", lines).trim();
 
         String expectedOutput = """
-            Program: PostRepository.java
-            Logical Lines = 2 | Physical Lines = 11 | Total Lines = 15
-            ----------------------------------------------------------
             Program: BlacklistedTokenRepository.java
             Logical Lines = 1 | Physical Lines = 9 | Total Lines = 15
+            ----------------------------------------------------------
+            Program: PostRepository.java
+            Logical Lines = 2 | Physical Lines = 11 | Total Lines = 15
             ----------------------------------------------------------
             Program: Post.java
             Logical Lines = 12 | Physical Lines = 32 | Total Lines = 41
