@@ -18,8 +18,8 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Build and Run Tests with Maven
-        run: mvn clean test
+      - name: Build and Run Specific Unit Tests
+        run: mvn clean test -Dtest=GoogleJavaFormatUtilTest,LOCAnalyzerUtilTest
 
   integration_test:
     runs-on: ubuntu-latest
@@ -33,7 +33,7 @@ jobs:
           distribution: 'temurin'
       - name: Clone repository
         run: git clone https://github.com/MiguelCastilloSanchez/spring-boot-posts-service.git
-      - name: Build and Run Tests with Maven
+      - name: Build and Run Integration Tests with Maven
         run: mvn clean test -Dtest=ProjectScannerServiceTest
 
   formatting:
