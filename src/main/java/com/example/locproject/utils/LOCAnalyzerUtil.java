@@ -92,12 +92,11 @@ public class LOCAnalyzerUtil {
   }
 
   public String getResult() {
-      return result;
+    return result;
   }
 
   public void reset() {
-      totalLinesProject = 0;
-      result = "";
+    totalLinesProject = 0;
+    result = "";
   }
-
 }

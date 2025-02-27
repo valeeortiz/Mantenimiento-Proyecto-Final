@@ -11,28 +11,25 @@ import java.nio.file.Paths;
 
 class LOCAnalyzerUtilTest {
 
-    private LOCAnalyzerUtil locAnalyzerUtil;
+  private LOCAnalyzerUtil locAnalyzerUtil;
 
-    @BeforeEach
-    void setUp() {
-        locAnalyzerUtil = new LOCAnalyzerUtil();
-        locAnalyzerUtil.reset();
-    }
+  @BeforeEach
+  void setUp() {
+    locAnalyzerUtil = new LOCAnalyzerUtil();
+    locAnalyzerUtil.reset();
+  }
 
-    @Test
-    void testCountLinesOfCode() throws IOException {
-        File testFile = Paths.get("src", "test", "resources", "JavaTestFile.txt").toFile();
+  @Test
+  void testCountLinesOfCode() throws IOException {
+    File testFile = Paths.get("src", "test", "resources", "JavaTestFile.txt").toFile();
 
-        locAnalyzerUtil.countLinesOfCode(testFile);
+    locAnalyzerUtil.countLinesOfCode(testFile);
 
-        String expectedOutput =
-                "Program: JavaTestFile.txt\n" +
-                "Logical Lines = 44 | Physical Lines = 83 | Total Lines = 93" +
-                "\n----------------------------------------------------------";
+    String expectedOutput =
+        "Program: JavaTestFile.txt\n"
+            + "Logical Lines = 44 | Physical Lines = 83 | Total Lines = 93"
+            + "\n----------------------------------------------------------";
 
-        assertEquals(expectedOutput, locAnalyzerUtil.getResult().trim(),
-                "Test didn't pass");
-    }
-
-    
+    assertEquals(expectedOutput, locAnalyzerUtil.getResult().trim(), "Test didn't pass");
+  }
 }
