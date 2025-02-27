@@ -90,14 +90,4 @@ public class LOCAnalyzerUtil {
       Logger.getLogger(LOCAnalyzerUtil.class.getName()).log(Level.SEVERE, null, exception);
     }
   }
-
-  public String getResult() {
-      return result;
-  }
-
-  public void reset() {
-      totalLinesProject = 0;
-      result = "";
-  }
-
 }

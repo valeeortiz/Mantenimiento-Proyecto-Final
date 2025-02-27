@@ -1,8 +1,14 @@
 
-Program: ProjectScannerService.java
-Logical Lines = 19 | Physical Lines = 39 | Total Lines = 57
-----------------------------------------------------------
 Program: Main.java
-Logical Lines = 11 | Physical Lines = 18 | Total Lines = 31
+Logical Lines = 11 | Physical Lines = 20 | Total Lines = 27
 ----------------------------------------------------------
-Total LOC in project= 88
+Program: LOCAnalyzerUtil.java
+Logical Lines = 44 | Physical Lines = 83 | Total Lines = 93
+----------------------------------------------------------
+Program: ProjectScannerService.java
+Logical Lines = 10 | Physical Lines = 23 | Total Lines = 31
+----------------------------------------------------------
+Program: LOCAnalyzerUtilTest.java
+Logical Lines = 0 | Physical Lines = 3 | Total Lines = 5
+----------------------------------------------------------
+Total LOC in project= 156
