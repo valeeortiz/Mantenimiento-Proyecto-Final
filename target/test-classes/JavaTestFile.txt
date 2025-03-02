@@ -6,16 +6,11 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class LOCAnalyzerUtil {
 
   private static int totalLinesProject = 0;
   private static String result = "";
-  private int openKey = 0; 
-  private boolean insideBlock = false;
-  private boolean lineAfterBlock = false;
 
   public void countLinesOfCode(File file) {
     try {
@@ -64,11 +59,7 @@ public class LOCAnalyzerUtil {
 
   private String checkLine(String line) {
     if (line.matches("^[\\s/\\t]*}[^a-z]*$")) {
-      openKey--;
-        if (openKey == 0) {
-            insideBlock = false; 
-        }
-        return "No match";
+      return "";
     }
     if (line.matches("^[\\s]*[//*].*$") || line.matches("^\\\\s*/\\\\*.*\\\\*/\\\\s*$")) {
       return "comment";
@@ -77,28 +68,13 @@ public class LOCAnalyzerUtil {
       return "enter";
     }
     String cleanedLine = line.replaceAll("//.*", "").trim();
-    Pattern controlPattern = Pattern.compile("^(if|for|while|switch)\\s*\\(.*\\)\\s*\\{?$");
-    Matcher matcher = controlPattern.matcher(cleanedLine); 
-    if (matcher.find()) {
-      openKey++;
-      insideBlock = true;
-      if (!cleanedLine.endsWith("{")) {
-        lineAfterBlock = true;
-        insideBlock = false;
-      }
-      return "logical line"; 
-    }
-
-    if (insideBlock && openKey > 0) {
-      return "No match";
-    }
-
-    if ((cleanedLine.endsWith(";") || line.matches(".*\\).*")) &&
-        !cleanedLine.startsWith("package") &&
-        !cleanedLine.startsWith("import") && 
-        !cleanedLine.matches("^\\s*(public|private|protected)?\\s*(class|interface|enum)\\s+\\w+") && 
-        !cleanedLine.matches(".*\\s+\\w+\\s*\\(.*\\)\\s*\\{")) {
-        return "logical line";
+    if ((cleanedLine.endsWith(";") || line.matches(".*\\).*"))
+        && !cleanedLine.startsWith("package")
+        && !cleanedLine.startsWith("import")
+        && !cleanedLine.matches(
+            "^\\s*(public|private|protected)?\\s*(class|interface|enum)\\s+\\w+")
+        && !cleanedLine.matches(".*\\s+\\w+\\s*\\(.*\\)\\s*\\{")) {
+      return "logical line";
     }
     return "No match";
   }
@@ -113,14 +89,5 @@ public class LOCAnalyzerUtil {
     } catch (IOException exception) {
       Logger.getLogger(LOCAnalyzerUtil.class.getName()).log(Level.SEVERE, null, exception);
     }
-  }
-
-  public String getResult() {
-    return result;
-  }
-
-  public void reset() {
-    totalLinesProject = 0;
-    result = "";
   }
 }
