@@ -16,6 +16,7 @@ public class LOCAnalyzerUtil {
   private int openKey = 0; 
   private boolean insideBlock = false;
   private boolean lineAfterBlock = false;
+  private int tryCatchFinallyCounter = 0;
 
   public void countLinesOfCode(File file) {
     try {
@@ -29,6 +30,10 @@ public class LOCAnalyzerUtil {
       while (scanner.hasNext()) {
         totalLines++;
         String currentLine = scanner.nextLine().trim();
+
+        if (currentLine.matches("^(catch|finally)\\s*\\(?.*\\)?.*$")) {
+          tryCatchFinallyCounter++;
+        }
 
         switch (checkLine(currentLine)) {
           case "enter":
@@ -44,6 +49,7 @@ public class LOCAnalyzerUtil {
       }
       scanner.close();
 
+      logicalLine -= tryCatchFinallyCounter;
       totalLinesProject += totalLines;
       physicalLine = totalLines - (enter + comment);
       result +=
@@ -65,10 +71,10 @@ public class LOCAnalyzerUtil {
   private String checkLine(String line) {
     if (line.matches("^[\\s/\\t]*}[^a-z]*$")) {
       openKey--;
-        if (openKey == 0) {
-            insideBlock = false; 
-        }
-        return "No match";
+      if (openKey == 0) {
+        insideBlock = false;
+      }
+      return "No match";
     }
     if (line.matches("^[\\s]*[//*].*$") || line.matches("^\\\\s*/\\\\*.*\\\\*/\\\\s*$")) {
       return "comment";
@@ -77,8 +83,8 @@ public class LOCAnalyzerUtil {
       return "enter";
     }
     String cleanedLine = line.replaceAll("//.*", "").trim();
-    Pattern controlPattern = Pattern.compile("^(if|for|while|switch)\\s*\\(.*\\)\\s*\\{?$");
-    Matcher matcher = controlPattern.matcher(cleanedLine); 
+    Pattern controlPattern = Pattern.compile("^(if|for|while|switch|try)\\s*\\(?.*\\)?.*\\{?$");
+    Matcher matcher = controlPattern.matcher(cleanedLine);
     if (matcher.find()) {
       openKey++;
       insideBlock = true;
@@ -86,7 +92,7 @@ public class LOCAnalyzerUtil {
         lineAfterBlock = true;
         insideBlock = false;
       }
-      return "logical line"; 
+      return "logical line";
     }
 
     if (insideBlock && openKey > 0) {
@@ -98,7 +104,7 @@ public class LOCAnalyzerUtil {
         !cleanedLine.startsWith("import") && 
         !cleanedLine.matches("^\\s*(public|private|protected)?\\s*(class|interface|enum)\\s+\\w+") && 
         !cleanedLine.matches(".*\\s+\\w+\\s*\\(.*\\)\\s*\\{")) {
-        return "logical line";
+      return "logical line";
     }
     return "No match";
   }
@@ -122,5 +128,6 @@ public class LOCAnalyzerUtil {
   public void reset() {
     totalLinesProject = 0;
     result = "";
+    tryCatchFinallyCounter = 0;
   }
 }
