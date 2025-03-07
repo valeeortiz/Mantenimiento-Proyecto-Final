@@ -13,7 +13,7 @@ public class LOCAnalyzerUtil {
 
   private static int totalLinesProject = 0;
   private static String result = "";
-  private int openKey = 0; 
+  private int openKey = 0;
   private boolean insideBlock = false;
   private boolean lineAfterBlock = false;
 
@@ -102,11 +102,12 @@ public class LOCAnalyzerUtil {
       return "No match";
     }
 
-    if ((cleanedLine.endsWith(";") || line.matches(".*\\).*")) &&
-        !cleanedLine.startsWith("package") &&
-        !cleanedLine.startsWith("import") && 
-        !cleanedLine.matches("^\\s*(public|private|protected)?\\s*(class|interface|enum)\\s+\\w+") && 
-        !cleanedLine.matches(".*\\s+\\w+\\s*\\(.*\\)\\s*\\{")) {
+    if ((cleanedLine.endsWith(";") || line.matches(".*\\).*"))
+        && !cleanedLine.startsWith("package")
+        && !cleanedLine.startsWith("import")
+        && !cleanedLine.matches(
+            "^\\s*(public|private|protected)?\\s*(class|interface|enum)\\s+\\w+")
+        && !cleanedLine.matches(".*\\s+\\w+\\s*\\(.*\\)\\s*\\{")) {
       return "logical line";
     }
     return "No match";
