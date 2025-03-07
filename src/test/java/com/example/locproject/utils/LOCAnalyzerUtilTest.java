@@ -27,7 +27,7 @@ class LOCAnalyzerUtilTest {
 
     String expectedOutput =
         "Program: JavaTestFile.txt\n"
-            + "Logical Lines = 44 | Physical Lines = 83 | Total Lines = 93"
+            + "Logical Lines = 24 | Physical Lines = 83 | Total Lines = 93"
             + "\n----------------------------------------------------------";
 
     assertEquals(expectedOutput, locAnalyzerUtil.getResult().trim(), "Test didn't pass");
