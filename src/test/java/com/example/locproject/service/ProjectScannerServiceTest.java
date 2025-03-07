@@ -34,11 +34,11 @@ class ProjectScannerServiceTest {
 
     String expectedOutput =
         """
-        Program: BlacklistedTokenRepository.java
-        Logical Lines = 1 | Physical Lines = 9 | Total Lines = 15
-        ----------------------------------------------------------
         Program: PostRepository.java
         Logical Lines = 2 | Physical Lines = 11 | Total Lines = 15
+        ----------------------------------------------------------
+        Program: BlacklistedTokenRepository.java
+        Logical Lines = 1 | Physical Lines = 9 | Total Lines = 15
         ----------------------------------------------------------
         Program: Post.java
         Logical Lines = 12 | Physical Lines = 32 | Total Lines = 41
@@ -49,7 +49,10 @@ class ProjectScannerServiceTest {
         Program: BlacklistedToken.java
         Logical Lines = 2 | Physical Lines = 14 | Total Lines = 18
         ----------------------------------------------------------
-        Total LOC in project= 109
+        Program: PostsServiceApplicationTests.java
+        Logical Lines = 0 | Physical Lines = 9 | Total Lines = 13
+        ----------------------------------------------------------
+        Total LOC in project= 122
         """
             .trim();
 

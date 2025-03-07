@@ -16,7 +16,6 @@ public class LOCAnalyzerUtil {
   private int openKey = 0; 
   private boolean insideBlock = false;
   private boolean lineAfterBlock = false;
-  private int tryCatchFinallyCounter = 0;
 
   public void countLinesOfCode(File file) {
     try {
@@ -25,15 +24,12 @@ public class LOCAnalyzerUtil {
       int comment = 0;
       int logicalLine = 0;
       int physicalLine = 0;
+      int catchOrFinallyCounter = 0;
       Scanner scanner = new Scanner(file);
 
       while (scanner.hasNext()) {
         totalLines++;
         String currentLine = scanner.nextLine().trim();
-
-        if (currentLine.matches("^(catch|finally)\\s*\\(?.*\\)?.*$")) {
-          tryCatchFinallyCounter++;
-        }
 
         switch (checkLine(currentLine)) {
           case "enter":
@@ -45,13 +41,16 @@ public class LOCAnalyzerUtil {
           case "logical line":
             logicalLine++;
             break;
+          case "catch or finally":
+            catchOrFinallyCounter++;
+            break;
         }
       }
       scanner.close();
 
-      logicalLine -= tryCatchFinallyCounter;
       totalLinesProject += totalLines;
       physicalLine = totalLines - (enter + comment);
+      logicalLine -= catchOrFinallyCounter;
       result +=
           "\nProgram: "
               + file.getName()
@@ -82,6 +81,10 @@ public class LOCAnalyzerUtil {
     if (!line.matches("^.*[a-z]+.*$")) {
       return "enter";
     }
+    if (line.matches(".*\\b(catch|finally)\\b.*")) {
+      return "catch or finally";
+    }
+
     String cleanedLine = line.replaceAll("//.*", "").trim();
     Pattern controlPattern = Pattern.compile("^(if|for|while|switch|try)\\s*\\(?.*\\)?.*\\{?$");
     Matcher matcher = controlPattern.matcher(cleanedLine);
@@ -128,6 +131,5 @@ public class LOCAnalyzerUtil {
   public void reset() {
     totalLinesProject = 0;
     result = "";
-    tryCatchFinallyCounter = 0;
   }
 }
